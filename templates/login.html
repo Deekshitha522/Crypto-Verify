@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoVerify Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="login-card">
+
+        <div class="logo">
+            🔐
+        </div>
+
+        <h1>CryptoVerify</h1>
+
+        <p>Secure Digital Certificate Verification Platform</p>
+
+        <form method="POST">
+
+            <input type="text" name="username" placeholder="Username" required>
+
+            <input type="password" name="password" placeholder="Password" required>
+
+            <button type="submit">Login</button>
+            {% if error %}
+<p class="error">{{ error }}</p>
+{% endif %}
+
+<div class="auth-links">
+
+<p>
+Don't have an account?
+<a href="/register">Register</a>
+</p>
+
+<p>
+<a href="/reset_password">Forgot Password?</a>
+</p>
+
+</div>
+
+        </form>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+    </div>
+
+</div>
+
+</body>
+</html>

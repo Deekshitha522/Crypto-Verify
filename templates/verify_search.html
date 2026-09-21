@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verification Portal</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="dashboard-container">
+
+    <aside class="sidebar">
+
+    <h2>🔐 CryptoVerify</h2>
+
+    <ul class="sidebar-menu">
+
+        <li>
+            <a href="/dashboard">🏠 Dashboard</a>
+        </li>
+
+        <li class="active">
+            <a href="/verify">🔍 Verification Portal</a>
+        </li>
+
+    </ul>
+
+    <a href="/dashboard" class="home-btn">⬅ Back to Home</a>
+
+    <a href="/logout" class="logout-btn">Logout</a>
+
+</aside>
+
+    <main class="main-content">
+
+        <h1>Certificate Verification</h1>
+
+        <div class="action-card">
+
+            <p>Enter the Certificate ID to verify authenticity.</p>
+
+            <form method="POST">
+
+                <input
+                    type="text"
+                    name="certificate_id"
+                    placeholder="Example: CV20260003"
+                    required>
+
+                <br><br>
+
+                <button type="submit">
+                    Verify Certificate
+                </button>
+
+            </form>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>

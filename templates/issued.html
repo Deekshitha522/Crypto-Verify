@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Issued Certificates</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <aside class="sidebar">
+
+    <h2>🔐 CryptoVerify</h2>
+
+    <ul class="sidebar-menu">
+
+        <li>
+            <a href="/dashboard">🏠 Dashboard</a>
+        </li>
+
+        <li class="active">
+            <a href="/issued">📋 Issued Certificates</a>
+        </li>
+
+    </ul>
+
+    <a href="/dashboard" class="home-btn">⬅ Back to Home</a>
+
+    <a href="/logout" class="logout-btn">Logout</a>
+
+</aside>
+
+    <main class="main-content">
+
+        <h1>Issued Certificates</h1>
+
+        <table class="certificate-table">
+
+            <thead>
+                <tr>
+                    <th>Certificate ID</th>
+                    <th>Name</th>
+                    <th>USN</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            {% for c in certificates %}
+
+            <tr>
+
+                <td>{{ c.certificate_id }}</td>
+                <td>{{ c.student_name }}</td>
+                <td>{{ c.usn }}</td>
+
+                <td>
+                    {% if c.status == "Valid" %}
+                        <span class="valid">Valid</span>
+                    {% else %}
+                        <span class="revoked">Revoked</span>
+                    {% endif %}
+                </td>
+
+                <td>
+
+                    <a href="/download/{{ c.certificate_id }}" title="Download">⬇️</a>
+
+                    <a href="/verify/{{ c.certificate_id }}" title="Verify">🔍</a>
+
+                    {% if c.status == "Valid" %}
+                    <a href="/revoke/{{ c.certificate_id }}" title="Revoke">🚫</a>
+                    {% endif %}
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </main>
+
+</div>
+
+</body>
+</html>

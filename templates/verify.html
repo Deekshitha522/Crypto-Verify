@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verification Result</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+   <aside class="sidebar">
+
+    <h2>🔐 CryptoVerify</h2>
+
+    <ul class="sidebar-menu">
+
+        <li>
+            <a href="/dashboard">🏠 Dashboard</a>
+        </li>
+
+        <li class="active">
+            <a href="/verify">🔍 Verification Portal</a>
+        </li>
+
+    </ul>
+
+    <a href="/dashboard" class="home-btn">⬅ Back to Home</a>
+
+    <a href="/logout" class="logout-btn">Logout</a>
+
+</aside>
+
+    <main class="main-content">
+
+        <div class="action-card">
+
+            {% if status=="Valid" %}
+                <h1 style="color:green;">✅ Authentic Certificate</h1>
+            {% elif status=="Revoked" %}
+                <h1 style="color:orange;">⚠ Certificate Revoked</h1>
+            {% else %}
+                <h1 style="color:red;">❌ Certificate Tampered</h1>
+            {% endif %}
+
+            <hr>
+
+            <p><strong>Certificate ID:</strong> {{ certificate.certificate_id }}</p>
+
+            <p><strong>Name:</strong> {{ certificate.student_name }}</p>
+
+            <p><strong>USN:</strong> {{ certificate.usn }}</p>
+
+            <p><strong>Course:</strong> {{ certificate.course }}</p>
+
+            <p><strong>CGPA:</strong> {{ certificate.cgpa }}</p>
+
+            <p><strong>Issue Date:</strong> {{ certificate.issue_date }}</p>
+
+            <p><strong>Status:</strong> {{ status }}</p>
+
+            <br>
+
+            <a href="/download/{{ certificate.certificate_id }}">
+                <button>⬇ Download Certificate</button>
+            </a>
+
+            <br><br>
+
+            <a href="/verify">
+                <button>Verify Another</button>
+            </a>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>

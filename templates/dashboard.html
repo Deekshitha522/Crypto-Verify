@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoVerify Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<aside class="sidebar">
+
+    <h2>🔐 CryptoVerify</h2>
+
+    <ul class="sidebar-menu">
+
+        <li class="active">
+            <a href="/dashboard">🏠 Dashboard</a>
+        </li>
+
+        <li>
+            <a href="/create">📄 Create Certificate</a>
+        </li>
+
+        <li>
+            <a href="/issued">📋 Issued Certificates</a>
+        </li>
+
+        <li>
+            <a href="/verify">🔍 Verification Portal</a>
+        </li>
+
+    </ul>
+
+    <a href="/logout" class="logout-btn">Logout</a>
+
+</aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <div class="top-bar">
+            <h1>Welcome, {{ username }}</h1>
+            <span>Admin Panel</span>
+        </div>
+
+       <!-- Statistics -->
+<div class="stats">
+
+    <div class="stat-card">
+        <h3>{{ issued }}</h3>
+        <p>Certificates Issued</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>{{ verified }}</h3>
+        <p>Verified</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>{{ revoked }}</h3>
+        <p>Revoked</p>
+    </div>
+
+</div>
+
+        <!-- Quick Actions -->
+        <div class="action-card">
+
+            <h2>Create Digital Certificate</h2>
+
+            <p>Generate secure certificates using SHA-256 hashing, RSA digital signatures, and QR-code verification.</p>
+
+            <a href="/create" class="primary-btn">Generate Certificate</a>
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>
